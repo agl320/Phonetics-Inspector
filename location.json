@@ -52,5 +52,8 @@
     "ɻ" : "retroflex",
     "j" : "palatal",
     "l" : "alveolar",
-    "L" : "velar"
+    "L" : "velar",
+    "ʤ" : "postalveolar",
+    "ʧ" : "postalveolar",
+    "w" : "bilabial/velar"
 }

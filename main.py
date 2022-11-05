@@ -20,7 +20,7 @@ if opt == 1:
     word_lst = list(input("Input string: "))
 
 
-    print("-------------- CHAR, LOCATION, VOICE --------------")
+    print("-------------- CHAR, LOCATION, VOICE, MANNER --------------")
     
     for char in word_lst:
         if char in location:
