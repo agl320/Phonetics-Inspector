@@ -55,5 +55,6 @@
     "L" : "?",
     "ʤ" : "affricate",
     "ʧ" : "affricate",
-    "w" : "central-approx"
+    "w" : "central-approx",
+    "|" : "CLICK"
 }

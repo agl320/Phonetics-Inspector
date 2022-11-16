@@ -5,6 +5,11 @@ with open("location.json","r", encoding='utf8') as json_file:
     location = json.load(json_file)
     json_file.close()
 
+# includes CLICKS
+with open("manner.json","r", encoding='utf8') as json_file:
+    manner = json.load(json_file)
+    json_file.close()
+
 with open("vowels.json","r", encoding='utf8') as json_file:
     vowels = json.load(json_file)
     json_file.close()
@@ -24,11 +29,11 @@ if opt == 1:
     
     for char in word_lst:
         if char in location:
-            print(f"{char}, {location[char]}, {voice[char]}")
+            print(f"{char}, {location[char]}, {voice[char]}, {manner[char]}")
         elif char in vowels:
             print(f"{char}, vowel")
         else:
-            print(f"{char}, location unknown, voice unknown")
+            print(f"{char}, location unknown, voice unknown, manner unknown")
 
     print("----------------------- END -----------------------")
 

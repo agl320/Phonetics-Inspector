@@ -55,5 +55,6 @@
     "L" : "velar",
     "ʤ" : "postalveolar",
     "ʧ" : "postalveolar",
-    "w" : "bilabial/velar"
+    "w" : "bilabial/velar",
+    "|" : "dental"
 }
