@@ -22,20 +22,24 @@ with open("voice.json","r", encoding='utf8') as json_file:
 opt = int(input("(1) Analyse or (2) German cognate: "))
 
 if opt == 1:
-    word_lst = list(input("Input string: "))
+    while(True):
+        word_lst = list(input("Input string: "))
+        if word_lst == []:
+            break
 
+        print("-------------- CHAR, LOCATION, VOICE, MANNER --------------")
+        
+        for char in word_lst:
+            if char in location:
+                print(f"{char}, {location[char]}, {voice[char]}, {manner[char]}")
+            elif char in vowels:
+                print(f"{char}, vowel")
+            elif char == " ":
+                print("-+-+-+-")
+            else:
+                print(f"{char}, location unknown, voice unknown, manner unknown")
 
-    print("-------------- CHAR, LOCATION, VOICE, MANNER --------------")
-    
-    for char in word_lst:
-        if char in location:
-            print(f"{char}, {location[char]}, {voice[char]}, {manner[char]}")
-        elif char in vowels:
-            print(f"{char}, vowel")
-        else:
-            print(f"{char}, location unknown, voice unknown, manner unknown")
-
-    print("----------------------- END -----------------------")
+        print("----------------------- END -----------------------")
 
 elif opt == 2:
     while(input("Continue (y/n)? ") == "y"):
