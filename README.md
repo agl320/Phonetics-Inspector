@@ -1,3 +1,3 @@
 # IPA-string-info
-Takes in a string or list of strings and returns the locations of each sound, as well as the type of sound.
+Takes in a string or list of strings and returns basic phonotactic information.
 Can also roughly translate English words into German cognate via simple rules (not correct translation)
