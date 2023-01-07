@@ -114,7 +114,20 @@ def printCognate():
     label_cog.config(text=f"Cognate: {var_cognate}")
 
 def to_dm():
-    window.config(bg='black')
+    window.config(bg='#130542')
+    for wid in widget_lst_prim:
+        wid.config(bg="#130542",bd=0,fg="white",highlightcolor="white", highlightbackground="#4C20FA")
+
+    for wid in widget_lst_secon:
+        wid.config(bg="#1d056e",bd=0,fg="white",highlightcolor="white", highlightbackground="#4C20FA")
+
+def to_lm():
+    window.config(bg='#4C20FA')
+    for wid in widget_lst_prim:
+        wid.config(bg="#4C20FA",bd=0,fg="white",highlightcolor="white", highlightbackground="#130542")
+
+    for wid in widget_lst_secon:
+        wid.config(bg="#5c33ff",bd=0,fg="white",highlightcolor="white", highlightbackground="#4C20FA")
 
 # TK
 
@@ -127,8 +140,8 @@ w_header = tk.Label(text="Convert to German Cognate", font=("Arial", 15, 'bold')
 word_entry = tk.Text(window,width=33,height=2)
 
 # cognate label init
-label_reg = tk.Label(window, text=f"Regular: ")
-label_cog = tk.Label(window, text=f"Cognate: ")
+label_reg = tk.Label(window, text=f"Regular: \n")
+label_cog = tk.Label(window, text=f"Cognate: \n")
 
 # placing widgets 
 word_button = tk.Button(
@@ -139,14 +152,22 @@ word_button = tk.Button(
     command=printCognate
     )
 
-dm_button = tk.Button(window, activebackground='black', command=to_dm)
+dm_button = tk.Button(window, text="Dark Mode", activebackground='#130542', activeforeground='white', command=to_dm)
+lm_button = tk.Button(window, text="Light Mode", activebackground='#4C20FA', activeforeground='white', command=to_lm)
 
-w_header.grid(row=0,column=0)
-word_entry.grid(row=1,column=0)
-word_button.grid(row=1,column=1)
-label_reg.grid(row=3,column=0)
-label_cog.grid(row=4,column=0)
+# widget list
+widget_lst_prim = [w_header,label_reg,label_cog,word_button,dm_button,lm_button]
+widget_lst_secon = [word_entry]
+
+window.config(pady=10,padx=10)
+w_header.grid(row=0,column=0,columnspan=2)
+word_entry.grid(row=1,column=0,columnspan=2)
+word_button.grid(row=1,column=2)
+label_reg.grid(row=3,column=0,columnspan=2)
+label_cog.grid(row=4,column=0,columnspan=2)
 dm_button.grid(row=5,column=0)
+lm_button.grid(row=5,column=1)
 
-
+# init widget
+to_lm()
 window.mainloop()
