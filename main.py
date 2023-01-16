@@ -115,6 +115,7 @@ def printCognate():
 
 def to_dm():
     window.config(bg='#130542')
+    cognate_frame.config(bg='#130542')
     for wid in widget_lst_prim:
         wid.config(bg="#130542",bd=0,fg="white",highlightcolor="white", highlightbackground="#4C20FA")
 
@@ -123,6 +124,7 @@ def to_dm():
 
 def to_lm():
     window.config(bg='#4C20FA')
+    cognate_frame.config(bg='#4C20FA')
     for wid in widget_lst_prim:
         wid.config(bg="#4C20FA",bd=0,fg="white",highlightcolor="white", highlightbackground="#130542")
 
@@ -133,33 +135,67 @@ def to_lm():
 
 window = tk.Tk()
 window.geometry('400x300')
-w_title = window.title("IPA-String-info")
-w_header = tk.Label(text="Convert to German Cognate", font=("Arial", 15, 'bold'))
+w_title = window.title("Phonetics Inspector")
+
+pho_frame = tk.Frame(window)
+pho_header = tk.Label(pho_frame, text="Phonetic Info", font=("Arial", 15, 'bold'))
+pho_entry = tk.Entry(pho_frame,width=33)
+"""
+word_lst = list(input("Input string: "))
+if word_lst == []:
+    break
+
+print("-------------- CHAR, LOCATION, VOICE, MANNER --------------")
+
+for char in word_lst:
+    if char in location:
+        print(f"{char}, {location[char]}, {voice[char]}, {manner[char]}")
+    elif char in vowels:
+        print(f"{char}, vowel")
+    elif char == " ":
+        print("-+-+-+-")
+    else:
+        print(f"{char}, location unknown, voice unknown, manner unknown")
+
+"""
+# COGNATE
+cognate_frame = tk.Frame(window)
+
+w_header = tk.Label(cognate_frame, text="Convert to German Cognate", font=("Arial", 15, 'bold'))
 
 # cognate label
-word_entry = tk.Text(window,width=33,height=2)
+word_entry = tk.Text(cognate_frame,width=33,height=2)
 
 # cognate label init
-label_reg = tk.Label(window, text=f"Regular: \n")
-label_cog = tk.Label(window, text=f"Cognate: \n")
+label_reg = tk.Label(cognate_frame, text=f"Regular: \n")
+label_cog = tk.Label(cognate_frame, text=f"Cognate: \n")
 
 # placing widgets 
 word_button = tk.Button(
-    window,
+    cognate_frame,
     text="Generate", 
     padx=10, 
     pady=5,
     command=printCognate
     )
 
-dm_button = tk.Button(window, text="Dark Mode", activebackground='#130542', activeforeground='white', command=to_dm)
-lm_button = tk.Button(window, text="Light Mode", activebackground='#4C20FA', activeforeground='white', command=to_lm)
+dm_button = tk.Button(cognate_frame, text="Dark Mode", activebackground='#130542', activeforeground='white', command=to_dm)
+lm_button = tk.Button(cognate_frame, text="Light Mode", activebackground='#4C20FA', activeforeground='white', command=to_lm)
 
 # widget list
 widget_lst_prim = [w_header,label_reg,label_cog,word_button,dm_button,lm_button]
 widget_lst_secon = [word_entry]
 
+
 window.config(pady=10,padx=10)
+
+pho_frame.grid(row=0,column=0)
+
+pho_header.grid(row=0,column=0)
+pho_entry.grid(row=1,column=0)
+
+cognate_frame.grid(row=1,column=0)
+
 w_header.grid(row=0,column=0,columnspan=2)
 word_entry.grid(row=1,column=0,columnspan=2)
 word_button.grid(row=1,column=2)
