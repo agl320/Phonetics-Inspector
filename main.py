@@ -131,15 +131,32 @@ def to_lm():
     for wid in widget_lst_secon:
         wid.config(bg="#5c33ff",bd=0,fg="white",highlightcolor="white", highlightbackground="#4C20FA")
 
+
+def word_analyse():
+    global pho_entry 
+    for i,letter in enumerate(pho_entry.get()):
+        print(letter)
+        tk.Label(word_analyse_frame, text=letter).grid(row=0,column=i)
+        tk.Label(word_analyse_frame, text="characteristic").grid(row=1,column=i)
+    
+
 # TK
 
 window = tk.Tk()
 window.geometry('400x300')
 w_title = window.title("Phonetics Inspector")
 
+
 pho_frame = tk.Frame(window)
 pho_header = tk.Label(pho_frame, text="Phonetic Info", font=("Arial", 15, 'bold'))
 pho_entry = tk.Entry(pho_frame,width=33)
+pho_b = tk.Button(pho_frame, text="Analyse", activebackground='#130542', activeforeground='black', command=word_analyse)
+
+word_analyse_frame = tk.Frame(window)
+
+
+
+
 """
 word_lst = list(input("Input string: "))
 if word_lst == []:
@@ -189,11 +206,14 @@ widget_lst_secon = [word_entry]
 
 window.config(pady=10,padx=10)
 
+word_analyse_frame.grid(row=1,column=0)
 pho_frame.grid(row=0,column=0)
 
 pho_header.grid(row=0,column=0)
 pho_entry.grid(row=1,column=0)
+pho_b.grid(row=1,column=1)
 
+"""
 cognate_frame.grid(row=1,column=0)
 
 w_header.grid(row=0,column=0,columnspan=2)
@@ -203,7 +223,7 @@ label_reg.grid(row=3,column=0,columnspan=2)
 label_cog.grid(row=4,column=0,columnspan=2)
 dm_button.grid(row=5,column=0)
 lm_button.grid(row=5,column=1)
-
+"""
 # init widget
 to_lm()
 window.mainloop()
